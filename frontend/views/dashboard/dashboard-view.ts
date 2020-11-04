@@ -1,14 +1,14 @@
-import { PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 
 import '@vaadin/vaadin-board/vaadin-board.js';
 import '@vaadin/vaadin-charts/vaadin-chart.js';
 import '@vaadin/vaadin-lumo-styles/all-imports.js';
+import { css, customElement, html, LitElement, property } from 'lit-element';
 
-class DashboardView extends PolymerElement {
-  static get template() {
-    return html`
-      <style include="shared-styles lumo-badge lumo-typography">
+@customElement('dashboard-view')
+export class DashboardView extends LitElement {
+
+  static get styles() {
+    return [css`
         :host {
           background-color: var(--lumo-contrast-10pct);
           box-sizing: border-box;
@@ -85,28 +85,30 @@ class DashboardView extends PolymerElement {
         vaadin-grid {
           height: 300px;
         }
-      </style>
-
+    `]
+  }
+  render() {
+    return html`
       <vaadin-board>
         <vaadin-board-row>
           <div class="wrapper">
             <div class="card space-m">
               <span theme="badge">Users</span>
-              <h2 class="primary-text">[[currentUsers]]</h2>
+              <h2 class="primary-text">${this.currentUsers}</h2>
               <span class="secondary-text">Current users in the app</span>
             </div>
           </div>
           <div class="wrapper">
             <div class="card space-m">
               <span theme="badge success">Events</span>
-              <h2 class="success-text">[[numEvents]]</h2>
+              <h2 class="success-text">${this.numEvents}</h2>
               <span class="secondary-text">Events from the views</span>
             </div>
           </div>
           <div class="wrapper">
             <div class="card space-m">
               <span theme="badge error">Conversion</span>
-              <h2 class="error-text">[[conversionRate]]%</h2>
+              <h2 class="error-text">${this.conversionRate}%</h2>
               <span class="secondary-text">User conversion rate</span>
             </div>
           </div>
@@ -133,15 +135,10 @@ class DashboardView extends PolymerElement {
     `;
   }
 
-  static get is() {
-    return 'dashboard-view';
-  }
-
-  static get properties() {
-    return {
-      // Declare your properties here.
-    };
-  }
+  @property({ type: Number })
+  currentUsers!: Number;
+  @property({ type: String })
+  numEvents!: String;
+  @property({ type: String })
+  conversionRate!: String;
 }
-
-customElements.define(DashboardView.is, DashboardView);

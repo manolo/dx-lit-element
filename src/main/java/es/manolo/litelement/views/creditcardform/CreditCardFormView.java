@@ -1,17 +1,16 @@
 package es.manolo.litelement.views.creditcardform;
 
+import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.polymertemplate.Id;
+import com.vaadin.flow.component.dependency.JsModule;
+import com.vaadin.flow.component.littemplate.LitTemplate;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.select.Select;
+import com.vaadin.flow.component.template.Id;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.templatemodel.TemplateModel;
-import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.dependency.JsModule;
-import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 
 /**
  * A Designer generated component for the credit-card-form-view template.
@@ -21,9 +20,9 @@ import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
  */
 @Route(value = "credit-card-form")
 @PageTitle("Credit Card Form")
-@JsModule("./views/creditcardform/credit-card-form-view.js")
+@JsModule("./views/creditcardform/credit-card-form-view.ts")
 @Tag("credit-card-form-view")
-public class CreditCardFormView extends PolymerTemplate<TemplateModel> {
+public class CreditCardFormView extends LitTemplate {
 
     @Id("creditCardNumber")
     private TextField creditCardNumber;

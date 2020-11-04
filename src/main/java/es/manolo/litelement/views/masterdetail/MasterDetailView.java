@@ -2,36 +2,36 @@ package es.manolo.litelement.views.masterdetail;
 
 import java.util.Optional;
 
-import es.manolo.litelement.data.entity.Person;
-import es.manolo.litelement.data.service.PersonService;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
+import com.vaadin.flow.component.littemplate.LitTemplate;
 import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.polymertemplate.Id;
-import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
+import com.vaadin.flow.component.template.Id;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.templatemodel.TemplateModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.artur.helpers.CrudServiceDataProvider;
 
+import es.manolo.litelement.data.entity.Person;
+import es.manolo.litelement.data.service.PersonService;
+
 @Route(value = "master-detail")
 @PageTitle("Master-Detail")
-@JsModule("./views/masterdetail/master-detail-view.js")
+@JsModule("./views/masterdetail/master-detail-view.ts")
 @Tag("master-detail-view")
-public class MasterDetailView extends PolymerTemplate<TemplateModel> {
+public class MasterDetailView extends LitTemplate {
 
     // This is the Java companion file of a design
     // You can find the design file in
-    // /frontend/src/views/views/masterdetail/master-detail-view.js
+    // /frontend/src/views/views/masterdetail/master-detail-view.ts
     // The design can be easily edited by using Vaadin Designer
     // (vaadin.com/designer)
 

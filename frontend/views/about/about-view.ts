@@ -1,8 +1,8 @@
-import { PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import { customElement, html, LitElement } from 'lit-element';
 
-class AboutView extends PolymerElement {
-  static get template() {
+@customElement('about-view')
+export class AboutView extends LitElement {
+  render () {
     return html`
       <style include="shared-styles">
         :host {
@@ -14,16 +14,4 @@ class AboutView extends PolymerElement {
       Content placeholder
     `;
   }
-
-  static get is() {
-    return 'about-view';
-  }
-
-  static get properties() {
-    return {
-      // Declare your properties here.
-    };
-  }
 }
-
-customElements.define(AboutView.is, AboutView);

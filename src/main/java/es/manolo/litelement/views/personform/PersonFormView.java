@@ -1,22 +1,22 @@
 package es.manolo.litelement.views.personform;
 
-import es.manolo.litelement.data.entity.Person;
-import es.manolo.litelement.data.service.PersonService;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dependency.JsModule;
+import com.vaadin.flow.component.littemplate.LitTemplate;
 import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.polymertemplate.Id;
-import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
+import com.vaadin.flow.component.template.Id;
 import com.vaadin.flow.component.textfield.EmailField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.templatemodel.TemplateModel;
+
+import es.manolo.litelement.data.entity.Person;
+import es.manolo.litelement.data.service.PersonService;
 
 /**
  * A Designer generated component for the person-form-view template.
@@ -26,9 +26,9 @@ import com.vaadin.flow.templatemodel.TemplateModel;
  */
 @Route(value = "person-form")
 @PageTitle("Person Form")
-@JsModule("./views/personform/person-form-view.js")
+@JsModule("./views/personform/person-form-view.ts")
 @Tag("person-form-view")
-public class PersonFormView extends PolymerTemplate<TemplateModel> {
+public class PersonFormView extends LitTemplate {
 
     @Id("firstName")
     private TextField firstName;

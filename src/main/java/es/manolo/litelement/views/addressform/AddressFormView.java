@@ -2,18 +2,18 @@ package es.manolo.litelement.views.addressform;
 
 import es.manolo.litelement.data.entity.Address;
 import es.manolo.litelement.data.service.AddressService;
+
+import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.dependency.JsModule;
+import com.vaadin.flow.component.littemplate.LitTemplate;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.templatemodel.TemplateModel;
-import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.notification.Notification;
-import com.vaadin.flow.component.dependency.JsModule;
-import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 
 /**
  * A Designer generated component for the address-form-view template.
@@ -23,9 +23,9 @@ import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
  */
 @Route(value = "address-form")
 @PageTitle("Address Form")
-@JsModule("./views/addressform/address-form-view.js")
+@JsModule("./views/addressform/address-form-view.ts")
 @Tag("address-form-view")
-public class AddressFormView extends PolymerTemplate<TemplateModel> {
+public class AddressFormView extends LitTemplate {
 
     @Id("streetAddress")
     private TextField street;

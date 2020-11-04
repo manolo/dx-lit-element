@@ -1,15 +1,17 @@
-import { PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import { css, customElement, html, LitElement } from 'lit-element';
 
-class HelloWorldView extends PolymerElement {
-  static get template() {
+@customElement('hello-world-view')
+export class HelloWorldView extends LitElement {
+  static get styles() {
+    return [css`
+        :host {
+          display: block;
+          padding: 1em;
+        }
+    `]
+  }
+  render() {
     return html`
-    <style>
-      :host {
-        display: block;
-        padding: 1em;
-      }
-      </style>
       <vaadin-text-field id="name"
         label="Your name"
       ></vaadin-text-field>
@@ -17,10 +19,4 @@ class HelloWorldView extends PolymerElement {
       </vaadin-notification>
     `;
   }
-
-  static get is() {
-    return 'hello-world-view';
-  }
 }
-
-customElements.define(HelloWorldView.is, HelloWorldView);

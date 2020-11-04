@@ -1,17 +1,21 @@
-import { PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import { css, customElement, html, LitElement, property } from 'lit-element';
 
 import '@polymer/iron-icon/iron-icon.js';
 import '@vaadin/vaadin-grid/all-imports.js';
+import '@vaadin/vaadin-icons/vaadin-icons.js';
+import '@vaadin/vaadin-lumo-styles/all-imports.js';
 import '@vaadin/vaadin-ordered-layout/vaadin-horizontal-layout.js';
 import '@vaadin/vaadin-ordered-layout/vaadin-vertical-layout.js';
-import '@vaadin/vaadin-lumo-styles/all-imports.js';
-import '@vaadin/vaadin-icons/vaadin-icons.js';
 
-class CardListView extends PolymerElement {
-  static get template() {
-    return html`
-      <style include="shared-styles lumo-badge lumo-typography">
+@customElement('card-list-view')
+export class CardListView extends LitElement {
+
+  @property({ type: Array })
+  items!: any[];
+
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           height: 100%;
@@ -79,44 +83,44 @@ class CardListView extends PolymerElement {
           font-size: var(--lumo-font-size-xs);
           margin-right: var(--lumo-space-l);
         }
-      </style>
+      `,
+    ];
+  }
 
-      <vaadin-grid id="grid" theme="no-border no-row-borders" items="[[items]]">
-        <vaadin-grid-column>
-          <template>
-            <vaadin-horizontal-layout theme="spacing-s" class="card">
-              <img src="[[item.image]]" />
-              <vaadin-vertical-layout>
-                <vaadin-horizontal-layout theme="spacing-s" class="header">
-                  <span class="name">[[item.name]]</span>
-                  <span class="date">[[item.date]]</span>
-                </vaadin-horizontal-layout>
-                <span class="post">[[item.post]]</span>
-                <vaadin-horizontal-layout theme="spacing-s" class="actions">
-                  <iron-icon icon="vaadin:heart"></iron-icon>
-                  <span class="likes">[[item.likes]]</span>
-                  <iron-icon icon="vaadin:comment"></iron-icon>
-                  <span class="comments">[[item.comments]]</span>
-                  <iron-icon icon="vaadin:connect"></iron-icon>
-                  <span class="shares">[[item.shares]]</span>
-                </vaadin-horizontal-layout>
-              </vaadin-vertical-layout>
-            </vaadin-horizontal-layout>
-          </template>
+  render() {
+    return html`
+      <vaadin-grid id="grid" theme="no-border no-row-borders" .items="${this.items}">
+        <vaadin-grid-column .renderer = "${this.colRenderer}">
         </vaadin-grid-column>
       </vaadin-grid>
     `;
   }
 
-  static get is() {
-    return 'card-list-view';
+  colRenderer(root:HTMLElement, _:any, data:any) {
+    if (!root.firstChild) {
+      const item = data.item;
+      root.innerHTML = `
+          <vaadin-horizontal-layout theme="spacing-s" class="card">
+          <img src="${item.image}"></img>
+          <vaadin-vertical-layout>
+            <vaadin-horizontal-layout theme="spacing-s" class="header">
+              <span class="name">${item.name}</span>
+              <span class="date">${item.date}</span>
+            </vaadin-horizontal-layout>
+            <span class="post">${item.post}</span>
+            <vaadin-horizontal-layout theme="spacing-s" class="actions">
+              <iron-icon icon="vaadin:heart"></iron-icon>
+              <span class="likes">${item.likes}</span>
+              <iron-icon icon="vaadin:comment"></iron-icon>
+              <span class="comments">${item.comments}</span>
+              <iron-icon icon="vaadin:connect"></iron-icon>
+              <span class="shares">${item.shares}</span>
+            </vaadin-horizontal-layout>
+          </vaadin-vertical-layout>
+        </vaadin-horizontal-layout>      
+      `
+    }
   }
 
-  static get properties() {
-    return {
-      // Declare your properties here.
-    };
-  }
+
 }
-
-customElements.define(CardListView.is, CardListView);

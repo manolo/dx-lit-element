@@ -2,24 +2,19 @@ package es.manolo.litelement.views.about;
 
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
-import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
+import com.vaadin.flow.component.littemplate.LitTemplate;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.templatemodel.TemplateModel;
-import es.manolo.litelement.views.about.AboutView.AboutViewModel;
 
 @Route(value = "about")
 @PageTitle("About")
-@JsModule("./views/about/about-view.js")
+@JsModule("./views/about/about-view.ts")
 @Tag("about-view")
-public class AboutView extends PolymerTemplate<AboutViewModel> {
+public class AboutView extends LitTemplate {
 
     // This is the Java companion file of a design
     // You can find the design file in /frontend/src/views/views/about/about-view.js
     // The design can be easily edited by using Vaadin Designer (vaadin.com/designer)
-
-    public static interface AboutViewModel extends TemplateModel {
-    }
 
     public AboutView() {
     }

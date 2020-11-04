@@ -29,7 +29,6 @@ export class MainView extends LitElement {
     {route: 'person-form', name: 'Person Form'},
     {route: 'address-form', name: 'Address Form'},
     {route: 'credit-card-form', name: 'Credit Card Form'},
-    {route: 'emptyts', name: 'EmptyTs'},
   ];
 
   @property({ type: String }) projectName = '';

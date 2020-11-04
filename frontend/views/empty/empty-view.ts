@@ -1,8 +1,8 @@
-import { PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import { customElement, html, LitElement } from 'lit-element';
 
-class EmptyView extends PolymerElement {
-  static get template() {
+customElement('empty-view')
+export class EmptyView extends LitElement {
+  render() {
     return html`
       <style include="shared-styles">
         :host {
@@ -14,16 +14,5 @@ class EmptyView extends PolymerElement {
       Content placeholder
     `;
   }
-
-  static get is() {
-    return 'empty-view';
-  }
-
-  static get properties() {
-    return {
-      // Declare your properties here.
-    };
-  }
 }
 
-customElements.define(EmptyView.is, EmptyView);
